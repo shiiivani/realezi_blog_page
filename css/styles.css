@@ -5,6 +5,13 @@ body {
     overflow-x: hidden;
     align-items: center;
 }
+
+
+main {
+    position: relative;
+    margin-top: 100px;
+    padding-left:147px;
+}
   
 header {
     top: 0;
@@ -81,15 +88,11 @@ h1 a {
     font-size: 16px;
     font-weight: 550;
     line-height: 20px;
-    text-align: left;
-    margin-top: 100px;
-    margin-left: 147px;
 }
 
 .image-container {
     display: flex;
     align-items: center;
-    margin-top: 20px;
 }
 
 .image-container img {
@@ -99,8 +102,9 @@ h1 a {
 .left-images {
     display: flex;
     flex-direction: column;
-    margin-top: -100px;
-    margin-left: 40px;
+    position: absolute;
+    top: 100px;
+    left: 15px;
 }
   
 .left-images img {
@@ -124,8 +128,8 @@ h1 a {
         display: flex;
         flex-direction: column;
         position: absolute;
-        margin-top: -60px;
-        margin-left: 0px;
+        left: 0px;
+        top: 90px;
     }
 
     .left-images img {
@@ -138,26 +142,24 @@ h1 a {
 .metro-image-container {
     display: flex;
     align-items: center;
-    margin-top: 30px;
+    /* margin-top: 30px; */
 }
 
 @media (max-width: 768px) {
     .metro-image-container {
-      width: 85%;
-      max-width: 400px;
-      height: 100px;
-      margin-left: 50px; /* Your desired left margin */
-      margin-right: calc(50% - 50px - (85% / 2)); /* Calculate right margin */
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
+        width: 90%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-left: 25px;
+        margin-top:20px;
+
     }
 }   
 
 .metro-image {
     width: 750px;
-    margin-left: 147px;
     border-radius: 20px;
 }
 
@@ -172,7 +174,7 @@ h1 a {
 }
 
 .read-blog {
-    margin-top: -30px;
+    margin: auto;
 }
 
 .link-text {
@@ -239,7 +241,6 @@ h1 a {
     line-height: 36px;
     text-align: left;
     margin-top: 20px;
-    margin-left: 147px;
 }
 
 .now-reading {
@@ -248,7 +249,7 @@ h1 a {
     line-height: 25px;
     text-align: left;
     margin-top: 12px;
-    margin-left: 147px;
+    /* margin-left: 147px; */
 }
 
 .reading-progress {
@@ -260,13 +261,13 @@ h1 a {
     overflow: hidden;
     margin-top: 20px;
     margin-bottom: -20px;
-    margin-left: 147px;
+    /* margin-left: 147px; */
 }
 
 .reading-progress.fixed {
     position: fixed;
     top: 60px;
-    left: 0;
+    left: 147px;
     width: 750px;
     z-index: 9;
     transition: top 0.5s ease;
@@ -290,7 +291,7 @@ h1 a {
 
 @media (max-width: 768px) {
     .reading-progress {
-        width: 95%;
+        width: 97%;
         height: 8px;
         background-color: rgba(217, 217, 217, 1);
         border: none;
@@ -298,19 +299,18 @@ h1 a {
         overflow: hidden;
         margin-top: 20px;
         margin-bottom: -30px;
-        margin-left: 10px;
-        margin-right: 0px;
     }
     
     .reading-progress.fixed {
         position: fixed;
         top: 50px;
         height: 8px;
+        left: 7px;
         width: 95%;
     }
       
     .progress-bar {
-        width: 100%px;
+        width: 100%;
         height: 8px;
         position: relative;
     }
@@ -335,7 +335,7 @@ h1 a {
     line-height: 20px;
     text-align: left;
     margin-top:39px;
-    margin-left: 147px;
+    /* margin-left: 147px; */
 }
 
 .section-heading {
@@ -344,7 +344,7 @@ h1 a {
     font-size: 24px;
     font-weight: 400;
     line-height: 30px;
-    margin-left: 147px;
+    /* margin-left: 147px; */
     margin-top: 32px;
 }
 
@@ -357,7 +357,7 @@ h1 a {
     line-height: 20px;
     text-align: left;
     margin-top: 10px;
-    margin-left: 147px;
+    /* margin-left: 147px; */
     margin-bottom: 32px;
 }
 
@@ -368,7 +368,7 @@ h1 a {
     font-weight: 400;
     line-height: 25px;
     margin-top: 10px;
-    margin-left: 147px;
+    /* margin-left: 147px; */
     width: 750px;
 }
 
@@ -377,7 +377,7 @@ h1 a {
     color: #616161;
     width: 750px;
     margin-top: 10px;
-    margin-left: 147px;
+    /* margin-left: 147px; */
 }
 
 .date-heading-intro-text {
@@ -385,12 +385,11 @@ h1 a {
     width: 750px;
     color: #616161;
     line-height: 20px;
-    margin-left: 147px;
 }
 
 .faq-container {
     width: 750px;
-    margin-left: 147px;
+    /* margin-left: 147px; */
     margin-top: 32px;
   }
   
@@ -898,19 +897,17 @@ canvas {
     }
 
     .heading {
-        font-size: 16px;
+        font-size: 15px;
         font-weight: 550;
         line-height: 20px;
-        text-align: left;
-        margin-top: 80px;
-        margin-left: 20px;
+        width: 97%;
     }
 
     .image-container {
         display: flex;
         align-items: center;
-        margin-top: 100px;
-        margin-bottom: 50px;
+        margin-top: 114px;
+        margin-bottom: 60px;
     }
     
     .image-container img {
@@ -935,16 +932,11 @@ canvas {
     .article-title {
         font-weight: 200;
         line-height: 30px;
-        width: 90%;
+        width: 97%;
         margin-top: -40px;
-        margin-left: 20px;
-        text-align: left;
         font-size: 24px;
     }
 
-    .now-reading {
-        margin-left: 20px;
-    }
 
     .r217, .r216 {
         margin-left: 20px;
@@ -952,18 +944,15 @@ canvas {
     }
 
     .metro-text {
-        margin-left: 20px;
         margin-top: 50px;
-        text-justify: center;
         font-size: 16px;
         font-weight: 400;
         line-height: 20px;
-        width: 90%;
+        width: 100%;
     }
 
     .section-heading, .section-intro, .faq-container {
-        width: 90%;
-        margin-left: 20px;
+        width: 100%;
     }
 
     .faq-container {
@@ -978,15 +967,13 @@ canvas {
         font-weight: 400;
         line-height: 25px;
         margin-top: 10px;
-        margin-left: 20px;
-        width: 90%;
+        width: 100%;
     }
     
     .date-heading-intro {
         color: #616161;
-        width: 90%;
+        width: 100%;
         margin-top: 10px;
-        margin-left: 20px;
     }
 
     .date-heading-intro-text {
@@ -1119,7 +1106,7 @@ canvas {
     position: relative;
     overflow: hidden;
     margin-top: 50px;
-    margin-left: 147px;
+    /* margin-left: 147px; */
 }
 
 .more-like-this-image {
@@ -1728,3 +1715,11 @@ canvas {
     font-weight: 600;
   }
   
+
+
+@media (max-width:768px) {
+    main {
+        padding-left: 20px;
+        padding-right: 10px;
+    }
+}
