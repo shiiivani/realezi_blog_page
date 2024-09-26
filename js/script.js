@@ -1,91 +1,127 @@
-const menuToggle = document.getElementById('checkbox');
-const navLinks = document.getElementById('nav-links');
+// Opening mobile navbar
+const menuToggle = document.getElementById("checkbox");
+const navLinks = document.getElementById("mobile-navbar");
 
-menuToggle.addEventListener('click', () => {
-    navLinks.classList.toggle('show-menu');
+menuToggle.addEventListener("click", () => {
+  navLinks.classList.toggle("show");
 });
-
-window.addEventListener('scroll', function() {
-  var readingProgress = document.querySelector('.reading-progress');
-  var progressFill = document.querySelector('.progress-fill');
+window.addEventListener("scroll", function () {
+  var readingProgress = document.querySelector(".reading-progress");
+  var progressFill = document.querySelector(".progress-fill");
+  var faqContainer = document.querySelector(".faq-container");
+  var progressBar = document.querySelector(".progress-bar");
 
   // Calculate scroll progress
   var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-  var windowHeight = window.innerHeight; 
+  var windowHeight = window.innerHeight;
   var documentHeight = Math.max(
-    document.body.scrollHeight, 
-    document.body.offsetHeight, 
-    document.documentElement.clientHeight, 
-    document.documentElement.scrollHeight, 
+    document.body.scrollHeight,
+    document.body.offsetHeight,
+    document.documentElement.clientHeight,
+    document.documentElement.scrollHeight,
     document.documentElement.offsetHeight
   );
-  var scrollPercent = (scrollTop / (documentHeight - windowHeight)) * 100;
 
-  progressFill.style.width = scrollPercent + '%';
+  var progressBarRect = progressBar.getBoundingClientRect();
+  var faqContainerTop = faqContainer.getBoundingClientRect().top + scrollTop;
+  var faqContainerHeight = faqContainer.offsetHeight;
 
-  // Dynamically calculate fixed position based on screen width
-  var fixedPosition = window.innerWidth < 768 ? 500 : 600; 
+  // Calculate the scrollable area up to the faqContainer
+  var scrollableHeight = faqContainerTop + faqContainerHeight;
 
-  if (scrollTop > fixedPosition) {
-    readingProgress.classList.add('fixed');
-  } else {
-    readingProgress.classList.remove('fixed');
-  }
+  // Calculate scroll progress relative to the faqContainer
+  var scrollPercent = Math.min(
+    (scrollTop / (scrollableHeight - windowHeight)) * 100,
+    100
+  );
+
+  // Set progress fill width
+  progressFill.style.width = scrollPercent + 10 + "%";
+
+  // Check if the progress bar should become fixed
+  // if (progressBarRect.top <= 0) {
+  //   readingProgress.classList.add("fixed");
+  // } else {
+  //   readingProgress.classList.remove("fixed");
+  // }
 });
 
-document.addEventListener("DOMContentLoaded", function() {
-    const riveInstance = new rive.Rive({
-      src: 'assets/images/Party-popper.riv',
-        canvas: document.getElementById('riveCanvas'),
-        autoplay: true,
-    });
+document.addEventListener("DOMContentLoaded", function () {
+  const riveInstance = new rive.Rive({
+    src: "assets/images/Party-popper.riv",
+    canvas: document.getElementById("riveCanvas"),
+    autoplay: true,
+  });
 });
 
-document.querySelectorAll('.faq-question').forEach(question => {
-    question.addEventListener('click', function () {
-    const faqItem = this.parentElement;
-  
-    document.querySelectorAll('.faq-item').forEach(item => {
-        if (item !== faqItem) {
-          item.classList.remove('active');
-        }
+// Share Dropdown
+document.addEventListener("DOMContentLoaded", function () {
+  const shareCont = document.querySelectorAll(".share-container");
+
+  shareCont.forEach((share) => {
+    const list = share.querySelector("ul");
+
+    share.addEventListener("click", function (event) {
+      event.stopPropagation();
+      list.classList.toggle("active");
     });
-  
-    faqItem.classList.toggle('active');
-    });
-});
-
-const rightScrollBtn = document.getElementById('right-scroll-btn');
-const moreLikeThisContainer = document.getElementById('more-like-this-container');
-
-// Check if the screen width is greater than a specific breakpoint (e.g., 768px for tablets and above)
-if (window.innerWidth > 768) {
-  // Create the left scroll button element (initially hidden)
-  const leftScrollBtn = document.createElement('div');
-  leftScrollBtn.classList.add('left-scroll-btn'); // Add your CSS class
-  leftScrollBtn.innerHTML = '<img src="assets/svg/scroll-btn.svg" alt="Left Scroll">'; // Replace with your left arrow image
-  leftScrollBtn.style.display = 'none'; // Initially hide the button
-  moreLikeThisContainer.parentNode.insertBefore(leftScrollBtn, moreLikeThisContainer); // Insert before the container
-
-  // ... rest of your code for right scroll, toggleLeftScrollBtn, and left scroll event listener
-  rightScrollBtn.addEventListener('click', () => {
-    moreLikeThisContainer.scrollLeft += 250;
   });
 
-  // Function to show/hide left scroll button
-  function toggleLeftScrollBtn() {
-    if (moreLikeThisContainer.scrollLeft > 0) {
-      leftScrollBtn.style.display = 'block';
-    } else {
-      leftScrollBtn.style.display = 'none';
-    }
-  }
+  document.addEventListener("click", function (event) {
+    shareCont.forEach((share) => {
+      const list = share.querySelector("ul");
 
-  // Event listener for scrolling
-  moreLikeThisContainer.addEventListener('scroll', toggleLeftScrollBtn);
-
-  // Event listener for left scroll button (add this after creating the button)
-  leftScrollBtn.addEventListener('click', () => {
-    moreLikeThisContainer.scrollLeft -= 250; // Scroll left
+      if (!share.contains(event.target)) {
+        list.classList.remove("active");
+      }
+    });
   });
+});
+
+function shareToFacebook() {
+  const url = encodeURIComponent(window.location.href);
+  window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}`, "_blank");
 }
+
+function shareToWhatsApp() {
+  const url = encodeURIComponent(window.location.href);
+  window.open(`https://wa.me/?text=${url}`, "_blank");
+}
+
+function shareToEmail() {
+  const subject = encodeURIComponent("Check out this article!");
+  const body = encodeURIComponent(
+    `I found this article interesting: ${window.location.href}`
+  );
+  window.location.href = `mailto:?subject=${subject}&body=${body}`;
+}
+
+function copyLink() {
+  const url = window.location.href;
+  navigator.clipboard
+    .writeText(url)
+    .then(() => alert("Link copied to clipboard!"))
+    .catch((err) => console.error("Failed to copy text: ", err));
+}
+
+// Slider
+document.addEventListener("DOMContentLoaded", function () {
+  const slider = document.querySelector(".listed-properties-container-slider");
+  const slideRightBtn = document.getElementById("slideRightRelatedProperties");
+  const slideLeftBtn = document.getElementById("slideLeftRelatedProperties");
+
+  slideRightBtn.addEventListener("click", function () {
+    slideLeftBtn.classList.remove("hidden");
+    slider.scrollBy({
+      left: 250,
+      behavior: "smooth",
+    });
+  });
+
+  slideLeftBtn.addEventListener("click", function () {
+    slider.scrollBy({
+      left: -250,
+      behavior: "smooth",
+    });
+  });
+});
