@@ -643,6 +643,7 @@ header ul {
   opacity: 0;
   transform: translateY(10px);
   transition: opacity 0.5s ease, transform 0.5s ease;
+  pointer-events: none;
 }
 
 .share-container:hover::before {

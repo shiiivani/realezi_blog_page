@@ -500,11 +500,43 @@
                             <div class="tag">Heritage</div>
                             <img src="assets/images/property-image-2.jpg" class="property-image" alt="Property Image" />
                             <div class="content">
-                                <div class="d-flex align-items-center justify-content-between">
+                                <div class="d-flex align-items-end justify-content-between">
                                     <h4>6 BHK Independent Building Floor</h4>
                                     <div class="d-flex">
-                                        <img src="assets/images/share.png" width="25px" height="24px"
-                                            alt="Share icon" />
+                                        <div class="share-container">
+                                            <img src="assets/images/share.png" width="25px" alt="Share icon" />
+                                            <ul>
+                                                <li>Share it with family and friends</li>
+                                                <li>
+                                                    <button onclick="copyLink()">
+                                                        <img src="assets/images/clip.png" width="18px"
+                                                            alt="Clip icon" />
+                                                        <p>Copy to Clipboard</p>
+                                                    </button>
+                                                </li>
+                                                <li>
+                                                    <button onclick="shareToFacebook()">
+                                                        <img src="assets/images/facebook.png" width="18px"
+                                                            alt="Facebook icon" />
+                                                        <p>Facebook</p>
+                                                    </button>
+                                                </li>
+                                                <li>
+                                                    <button onclick="shareToEmail()">
+                                                        <img src="assets/images/gmail.png" width="18px"
+                                                            alt="Gmail icon" />
+                                                        <p>Mail</p>
+                                                    </button>
+                                                </li>
+                                                <li>
+                                                    <button onclick="shareToWhatsApp()">
+                                                        <img src="assets/images/whatsapp.png" width="18px"
+                                                            alt="Whatsapp icon" />
+                                                        <p>Whatsapp</p>
+                                                    </button>
+                                                </li>
+                                            </ul>
+                                        </div>
 
                                     </div>
                                 </div>
