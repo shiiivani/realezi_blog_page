@@ -955,7 +955,7 @@ footer button p {
   display: flex;
 }
 
-.lower-bottom .socials-container button {
+.lower-bottom .socials-container a {
   margin: 0 8px;
 }
 
@@ -1026,7 +1026,7 @@ footer button p {
 .social-btn .text {
   position: absolute;
   color: rgb(255, 255, 255);
-  width: 120px;
+  /* width: 120px; */
   opacity: 0;
   transition-duration: 0.4s;
 }
